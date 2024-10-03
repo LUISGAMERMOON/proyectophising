@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Alumno | CONALEP</title>
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #007B3E; /* Verde oscuro CONALEP */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #70AD47; /* Verde claro CONALEP */
+            padding: 10px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        .form-section, .office365-section {
+            width: 45%;
+        }
+        .form-section h3 {
+            margin-bottom: 20px;
+            color: #007B3E;
+        }
+        .form-section form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-section form label,
+        .form-section form input {
+            margin-bottom: 10px;
+        }
+        .form-section form input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #70AD47;
+        }
+        .form-section form input[type="submit"] {
+            padding: 10px;
+            background-color: #007B3E;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .office365-section img {
+            max-width: 100%;
+            height: auto;
+        }
+        .office365-section a {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            padding: 10px;
+            background-color: #70AD47;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #007B3E;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        footer ul li a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <div class="container">
+            <h1>COLEGIO NACIONAL DE EDUCACIÓN PROFESIONAL TÉCNICA</h1>
+            <p>SISTEMA DE ACOMPAÑAMIENTO INTEGRAL DEL ALUMNO CONALEP</p>
+        </div>
+    </header>
+
+    <!-- Barra de navegación -->
+    <nav>
+        <ul>
+            <li><a href="#">Misión y Visión</a></li>
+            <li><a href="#">Estudiantes</a></li>
+            <li><a href="#">Prensa</a></li>
+            <li><a href="#">Transparencia</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <h2>SISTEMA DE ACOMPAÑAMIENTO INTEGRAL DEL ALUMNO</h2>
+
+        <!-- Formulario -->
+        <div class="form-container">
+            <!-- Ingreso con Matrícula y CURP -->
+            <div class="form-section">
+                <h3>Ingresar con Matrícula y CURP</h3>
+                <form onsubmit="return validarYRedirigir()">
+                    <label for="matricula">Matrícula</label>
+                    <input type="text" id="matricula" name="matricula" placeholder="Ingresar matrícula..." required>
+
+                    <label for="curp">CURP</label>
+                    <input type="text" id="curp" name="curp" placeholder="Ingresar CURP..." required>
+
+                    <input type="submit" value="Ingresar">
+                </form>
+            </div>
+
+            <!-- Ingreso con Office 365 -->
+            <div class="office365-section">
+                <img src="data:image/png;base64,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" alt="Office 365">
+                <a href="#">Ingresar con Office 365</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <ul>
+                <li><a href="#">Participa</a></li>
+                <li><a href="#">Mapa de sitio</a></li>
+                <li><a href="#">Aviso de privacidad</a></li>
+            </ul>
+            <p>&copy; 2024 Gobierno de México</p>
+        </div>
+    </footer>
+
+    <script>
+        // Función de validación y redirección
+        function validarYRedirigir() {
+            var matricula = document.getElementById("matricula").value;
+            var curp = document.getElementById("curp").value;
+
+            if (matricula === "" || curp === "") {
+                alert("Por favor, completa todos los campos.");
+                return false; // Evita que el formulario se envíe
+            }
+
+            // Redireccionar a otra página después de validar
+            window.location.href = "https://ar.pinterest.com/parrinconarte/fotograf%C3%ADas-de-gatos/"; // Cambia "pagina_destino.html" por la página a la que quieras redirigir
+            return false; // Evita el envío del formulario
+        }
+    </script>
+
+</body>
+</html>
